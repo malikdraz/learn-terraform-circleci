@@ -21,7 +21,7 @@ resource "aws_s3_bucket" "app" {
 }
 
 resource "aws_s3_object" "app" {
-  acl          = "public-read"
+  acl          = "private"
   key          = "index.html"
   bucket       = aws_s3_bucket.app.id
   content      = file("./assets/index.html")
@@ -30,7 +30,7 @@ resource "aws_s3_object" "app" {
 
 resource "aws_s3_bucket_acl" "bucket" {
   bucket = aws_s3_bucket.app.id
-  acl    = "public-read"
+  acl    = "private"
 }
 
 resource "aws_s3_bucket_website_configuration" "terramino" {
